@@ -90,7 +90,7 @@ export default function Layout({ user, onLogout, resumeData }) {
           }}>
             {/* Logo image - replace with your CareerPilot logo */}
             <img 
-              src="/logo.png" 
+              src="/careerdisha.jpg" 
               alt="CareerPilot Logo"
               style={{
                 width: 40,
@@ -126,7 +126,7 @@ export default function Layout({ user, onLogout, resumeData }) {
               color: "var(--text-primary)",
               letterSpacing: "-0.5px",
             }}>
-              CareerPilot
+              CareerDisha-AI
             </span>
           </NavLink>
 
