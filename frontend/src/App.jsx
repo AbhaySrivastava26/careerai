@@ -14,6 +14,7 @@ import Roadmap from "./pages/Roadmap";
 import Jobs from "./pages/Jobs";
 import CustomRoadmap from "./pages/CustomRoadmap";
 import Interview from "./pages/Interview";
+import CompanyPrep from "./pages/CompanyPrep";
 
 const API = "http://localhost:8080";
 
@@ -189,12 +190,13 @@ export default function App() {
         <Route path="/" element={<Layout user={user} onLogout={handleLogout} resumeData={resumeData} />}>
           <Route index element={<Upload setResumeData={handleSetResumeData} />} />
           <Route path="dashboard" element={<Dashboard data={resumeData} />} />
-          <Route path="careers" element={<CareerMatches data={resumeData} />} />
+          {/* <Route path="careers" element={<CareerMatches data={resumeData} />} /> */}
           <Route path="skillgap" element={<SkillGap data={resumeData} />} />
           <Route path="roadmap" element={<Roadmap data={resumeData} />} />
           <Route path="jobs" element={<Jobs data={resumeData} />} />
           <Route path="interview" element={<Interview data={resumeData} />} />
           <Route path="custom-roadmap" element={<CustomRoadmap />} />
+          <Route path="company-prep" element={<CompanyPrep />} />
         </Route>
       </Routes>
     </BrowserRouter>

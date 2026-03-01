@@ -31,9 +31,9 @@ export default function SkillGap({ data }) {
       {/* Header */}
       <div className="sg-header">
         {/* <p className="sg-step">Step 2 of 4</p> */}
-        <h1 className="sg-title">Skill Gap Analysis</h1>
-        <p className="sg-subtitle">
-          How ready are you for <strong>{role}</strong>?
+        <h1 className="sg-title"style={{color: "#359bef"}} >Skill Gap Analysis</h1>
+        <p className="sg-subtitle"style={{color: "#1b6aaa"}}   >
+          How ready are you for <strong style={{color: "#3244bc"}}>{role}</strong>?
         </p>
       </div>
 
@@ -124,7 +124,7 @@ export default function SkillGap({ data }) {
             <div className="sg-tags">
               {missingReq.map(s => (
                 <span key={s} className="sg-tag sg-tag-missing">
-                  {s}
+                  {s} 
                 </span>
               ))}
             </div>
@@ -151,7 +151,7 @@ export default function SkillGap({ data }) {
         <div className="sg-career-list">
           {(data?.career_matches || []).map((m, idx) => (
             <div key={m.title} className="sg-career-row" style={{ animationDelay: `${idx * 0.1}s` }}>
-              <span className="sg-career-icon">{m.icon}</span>
+              {/* <span className="sg-career-icon">{m.icon}</span> */}
               <span className="sg-career-name">{m.title}</span>
               <div className="sg-bar-track">
                 <div

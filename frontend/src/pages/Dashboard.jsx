@@ -129,8 +129,8 @@ export default function Dashboard({ data }) {
       
       {/* Page header */}
       <div className="dashboard-header">
-        <h1 className="dashboard-title">Professional Dashboard</h1>
-        <p className="dashboard-subtitle">
+        <h1 className="dashboard-title" style={{color: "#2273e5"}}>Professional Dashboard</h1>
+        <p className="dashboard-subtitle" style={{color: "#8baee0"}}>
           Comprehensive overview of skills, experience, and career readiness
         </p>
       </div>

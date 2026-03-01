@@ -36,7 +36,7 @@ export default function Jobs({ data }) {
     <div>
       <div style={{ marginBottom: 32 }}>
         {/* <p style={{ color: "#2563EB", fontWeight: 600, fontSize: 14, marginBottom: 8 }}>Step 4 of 4</p> */}
-        <h1 style={{ fontSize: 36, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.5px", margin: "0 0 12px" }}>
+        <h1 style={{ fontSize: 36, fontWeight: 800, color: "#2563EB", letterSpacing: "-0.5px", margin: "0 0 12px" }}>
           Live Job Listings
         </h1>
         <p style={{ color: "#64748B", fontSize: 16, margin: 0 }}>

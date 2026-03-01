@@ -59,7 +59,7 @@ export default function CustomRoadmap() {
           <Wand2 size={14} color="#7C3AED" />
           <span style={{ fontSize: 13, color: "#7C3AED", fontWeight: 600 }}>Custom Roadmap Generator</span>
         </div>
-        <h1 style={{ fontSize: 36, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.5px", margin: "0 0 12px" }}>
+        <h1 style={{ fontSize: 36, fontWeight: 800, color: "#2563EB", letterSpacing: "-0.5px", margin: "0 0 12px" }}>
           Generate Any Career Roadmap
         </h1>
         <p style={{ color: "#64748B", fontSize: 16, margin: 0 }}>

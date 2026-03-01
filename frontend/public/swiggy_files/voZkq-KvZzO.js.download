@@ -1,0 +1,3 @@
+;/*FB_PKG_DELIM*/
+
+__d("WAWebBroadcastConsts",[],(function(t,n,r,o,a,i){"use strict";var e=2,l=1e3,s=20,u=32;i.MIN_BROADCAST_RECIPIENTS=e,i.MS_PER_SEC=l,i.MAX_BROADCAST_ID_LENGTH=s,i.MESSAGE_SECRET_BYTE_LENGTH=u}),66);

@@ -1,0 +1,16 @@
+/* Theme-aware styles */
+:root {
+  --accent-blue: #3b82f6;
+}
+
+html.dark-mode {
+  --accent-blue: #60a5fa;
+}
+
+/* Ensure images have proper background */
+img[src*="wikimedia"],
+img[src*="gstatic"] {
+  background: var(--bg-tertiary);
+  padding: 8px;
+  border-radius: 8px;
+}

@@ -29,10 +29,10 @@ export default function Roadmap({ data }) {
       {/* Header */}
       <div className="rm-header">
         {/* <p className="rm-step">Step 3 of 4</p> */}
-        <h1 className="rm-title">Your Learning Roadmap</h1>
-        <p className="rm-subtitle">
-          A personalised <strong>{roadmap.total_duration || "12-week"}</strong> plan to become a{" "}
-          <strong>{roadmap.target_role}</strong>
+        <h1 className="rm-title " style={{color: "#359bef"}}>Your Learning Roadmap</h1>
+        <p className="rm-subtitle" style={{color: "#5086b3"}}>
+          A personalised < strong style={{color: "#404ec9"}}>{roadmap.total_duration || "12-week"}</strong> plan to become a{" "}
+          <strong style={{color: "#404ec9"}}>{roadmap.target_role}</strong>
         </p>
       </div>
 

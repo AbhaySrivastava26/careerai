@@ -49,6 +49,11 @@ from auth import (
     add_resume_to_user, get_user_resumes, setup_auth_indexes,
     UserRegister, UserLogin
 )
+# Load environment variables
+import os
+from dotenv import load_dotenv
+
+load_dotenv('.env.local')  # Load from .env.local file
 
 # ─── App ─────────────────────────────────────────────────────────────────────
 app = FastAPI(
@@ -56,17 +61,17 @@ app = FastAPI(
     description="AI-Powered Resume Parser & Career Recommendation Backend",
     version="5.0.0",
 )
-
+CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # ─── MongoDB ─────────────────────────────────────────────────────────────────
-MONGO_URI = "mongodb://localhost:27017"
+MONGO_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 DB_NAME   = "careerai"
 
 try:

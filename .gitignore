@@ -2,3 +2,11 @@ resume.pdf
 thanviresume.pdf
 parsed_resume.json
 # /roadmap_images
+.env
+.env.local
+.env.production
+__pycache__/
+temp_uploads/
+roadmap_images/*.png
+*.pyc
+node_modules/

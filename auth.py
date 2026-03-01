@@ -179,7 +179,7 @@ def get_user_resumes(user_id: str) -> list:
 def setup_auth_indexes():
     """Create indexes for authentication."""
     users_collection.create_index("email", unique=True)
-    print("✓ Auth indexes created")
+    print(" Auth indexes created")
 
 if __name__ == "__main__":
     # Test authentication
@@ -197,16 +197,16 @@ if __name__ == "__main__":
             password="testpass123"
         )
         result = register_user(test_user)
-        print(f"\n✓ User registered: {result['user']['email']}")
+        print(f"User registered: {result['user']['email']}")
         print(f"  Token: {result['access_token'][:50]}...")
         
         # Test token verification
         user_data = get_user_from_token(result['access_token'])
-        print(f"✓ Token verified: {user_data['name']}")
+        print(f"Token verified: {user_data['name']}")
         
         # Clean up test user
         users_collection.delete_one({"email": "test@example.com"})
-        print("✓ Test user cleaned up")
+        print(" Test user cleaned up")
         
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f" Error: {e}")

@@ -3,13 +3,14 @@ import { useState, useRef, useEffect } from "react";
 import { useTheme } from "../contexts/ThemeContext";
 
 const NAV_ITEMS = [
-  { to: "/",               label: "Upload"      },
+  { to: "/upload",         label: "Upload"      },
   { to: "/dashboard",      label: "Dashboard"   },
-  { to: "/careers",        label: "Careers"     },
+  // { to: "/careers",        label: "Careers"     },
   { to: "/skillgap",       label: "Skill Gap"   },
   { to: "/roadmap",        label: "Roadmap"     },
   { to: "/jobs",           label: "Jobs"        },
   { to: "/interview",      label: "Interview"   },
+  { to: "/company-prep",   label: "Companies"   },
   { to: "/custom-roadmap", label: "Generate"    },
 ];
 
@@ -18,6 +19,13 @@ export default function Layout({ user, onLogout, resumeData }) {
   const menuRef = useRef(null);
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+
+  // Redirect to login if no user
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -80,12 +88,29 @@ export default function Layout({ user, onLogout, resumeData }) {
             gap: 12,
             textDecoration: "none",
           }}>
+            {/* Logo image - replace with your CareerPilot logo */}
+            <img 
+              src="/logo.png" 
+              alt="CareerPilot Logo"
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 8,
+                objectFit: "contain",
+              }}
+              onError={(e) => {
+                // Fallback to text logo if image fails to load
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+            {/* Fallback text logo */}
             <div style={{
               width: 40,
               height: 40,
               borderRadius: 8,
               background: "linear-gradient(135deg, #0f172a 0%, #334155 100%)",
-              display: "flex",
+              display: "none",
               alignItems: "center",
               justifyContent: "center",
               fontWeight: 800,
@@ -93,7 +118,7 @@ export default function Layout({ user, onLogout, resumeData }) {
               color: "#fff",
               letterSpacing: "-0.5px",
             }}>
-              CA
+              CP
             </div>
             <span style={{
               fontSize: 20,
@@ -101,7 +126,7 @@ export default function Layout({ user, onLogout, resumeData }) {
               color: "var(--text-primary)",
               letterSpacing: "-0.5px",
             }}>
-              CareerAI
+              CareerPilot
             </span>
           </NavLink>
 
