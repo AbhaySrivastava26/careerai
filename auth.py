@@ -11,17 +11,22 @@ import jwt
 import bcrypt
 from pydantic import BaseModel, EmailStr
 from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
 
-# MongoDB connection
-client = MongoClient("mongodb://localhost:27017/")
+# Load environment variables
+load_dotenv('.env.local')
+
+# MongoDB connection - USE ENVIRONMENT VARIABLE
+MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
+client = MongoClient(MONGODB_URI)
 db = client["careerai"]
 users_collection = db["users"]
 
 # JWT Configuration
-SECRET_KEY = "your-secret-key-change-in-production-2024"  # Change this in production!
+SECRET_KEY = os.getenv("JWT_SECRET", "your-secret-key-change-in-production-2024")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # 7 days
-
 # ─── Pydantic Models ──────────────────────────────────────────────────────────
 class UserRegister(BaseModel):
     name: str
