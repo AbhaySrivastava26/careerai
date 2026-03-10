@@ -11,18 +11,25 @@ import jwt
 import bcrypt
 from pydantic import BaseModel, EmailStr
 from pymongo import MongoClient
-import os
+# The `import os` statement in the code snippet is importing the Python `os` module. This module
+# provides a way to interact with the operating system, allowing the script to access environment
+# variables, manipulate file paths, and perform various system-related tasks. In this specific code,
+# it is used to load environment variables from a `.env` file using `load_dotenv()` and access
+# environment variables like `MONGODB_URI`, `DATABASE_NAME`, and `JWT_SECRET` for configuration
+# purposes.
 from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv('.env.local')
+load_dotenv()
 
-# MongoDB connection - USE ENVIRONMENT VARIABLE
-MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
+import os
+
+MONGODB_URI = os.getenv("MONGODB_URI")
+DB_NAME = os.getenv("DATABASE_NAME", "careerai")
+
 client = MongoClient(MONGODB_URI)
-db = client["careerai"]
+db = client[DB_NAME]
 users_collection = db["users"]
-
 # JWT Configuration
 SECRET_KEY = os.getenv("JWT_SECRET", "your-secret-key-change-in-production-2024")
 ALGORITHM = "HS256"

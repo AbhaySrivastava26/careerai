@@ -42,7 +42,7 @@ export default function App() {
         setShowResumeLoadedNotif(true);
         setTimeout(() => setShowResumeLoadedNotif(false), 4000);
         
-        console.log("✓ Loaded previous resume data");
+        console.log(" Loaded previous resume data");
       }
     } catch (error) {
       console.log("No previous resume found or error loading:", error.message);
@@ -188,7 +188,9 @@ export default function App() {
 
         {/* Main routes */}
         <Route path="/" element={<Layout user={user} onLogout={handleLogout} resumeData={resumeData} />}>
-          <Route index element={<Upload setResumeData={handleSetResumeData} />} />
+          {/* <Route index element={<Upload setResumeData={handleSetResumeData} />} /> */}
+          <Route index element={<Navigate to="/upload" />} />
+          <Route path="upload" element={<Upload setResumeData={handleSetResumeData} />} />
           <Route path="dashboard" element={<Dashboard data={resumeData} />} />
           {/* <Route path="careers" element={<CareerMatches data={resumeData} />} /> */}
           <Route path="skillgap" element={<SkillGap data={resumeData} />} />

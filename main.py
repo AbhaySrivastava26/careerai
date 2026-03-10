@@ -53,15 +53,18 @@ from auth import (
 import os
 from dotenv import load_dotenv
 
-load_dotenv('.env.local')  # Load from .env.local file
+# Load environment variables (works locally + on Render)
+load_dotenv()
 
-# ─── App ─────────────────────────────────────────────────────────────────────
+# ─── App ─────────────────────────────────────────────────────────
 app = FastAPI(
     title="CareerAI API",
     description="AI-Powered Resume Parser & Career Recommendation Backend",
     version="5.0.0",
 )
+
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
@@ -70,17 +73,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ─── MongoDB ─────────────────────────────────────────────────────────────────
-MONGO_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
-DB_NAME   = "careerai"
+# ─── MongoDB ─────────────────────────────────────────────────────
+
+MONGO_URI = os.getenv("MONGODB_URI")
+DB_NAME = os.getenv("DATABASE_NAME", "careerai")
+
+if not MONGO_URI:
+    raise Exception("MONGODB_URI not set in environment variables")
 
 try:
-    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=3000)
+    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
     client.admin.command("ping")
-    db                 = client[DB_NAME]
+    db = client[DB_NAME]
     resumes_collection = db["resumes"]
     print("✅ MongoDB connected")
-    
+
     # Setup auth indexes
     setup_auth_indexes()
 except ConnectionFailure:
