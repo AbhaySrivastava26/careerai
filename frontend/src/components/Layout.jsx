@@ -12,6 +12,8 @@ const NAV_ITEMS = [
   { to: "/interview",      label: "Interview"   },
   { to: "/company-prep",   label: "Companies"   },
   { to: "/custom-roadmap", label: "Generate"    },
+   { to: "/ats-match",      label: "ATS Battle"  },
+  
 ];
 
 export default function Layout({ user, onLogout, resumeData }) {

@@ -53,6 +53,7 @@ from auth import (
 import os
 from dotenv import load_dotenv
 
+
 # Load environment variables (works locally + on Render)
 load_dotenv()
 
@@ -72,7 +73,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+from ats_matcher import router as ats_router
+app.include_router(ats_router)
 # ─── MongoDB ─────────────────────────────────────────────────────
 
 MONGO_URI = os.getenv("MONGODB_URI")

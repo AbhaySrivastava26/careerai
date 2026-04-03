@@ -9,4 +9,4 @@ __pycache__/
 temp_uploads/
 roadmap_images/*.png
 *.pyc
-node_modules/
+node_modules/.env.local 

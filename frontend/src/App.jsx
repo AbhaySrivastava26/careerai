@@ -15,6 +15,7 @@ import Jobs from "./pages/Jobs";
 import CustomRoadmap from "./pages/CustomRoadmap";
 import Interview from "./pages/Interview";
 import CompanyPrep from "./pages/CompanyPrep";
+import ATSMatch from "./pages/ATSMatch";
 
 const API = "http://localhost:8080";
 
@@ -199,6 +200,7 @@ export default function App() {
           <Route path="interview" element={<Interview data={resumeData} />} />
           <Route path="custom-roadmap" element={<CustomRoadmap />} />
           <Route path="company-prep" element={<CompanyPrep />} />
+          <Route path="/ats-match" element={<ATSMatch />} />
         </Route>
       </Routes>
     </BrowserRouter>
