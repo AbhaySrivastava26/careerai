@@ -84,17 +84,20 @@ if not MONGO_URI:
     raise Exception("MONGODB_URI not set in environment variables")
 
 try:
-    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
-    client.admin.command("ping")
+    client = MongoClient(MONGO_URI)
     db = client[DB_NAME]
     resumes_collection = db["resumes"]
     print("✅ MongoDB connected")
 
     # Setup auth indexes
-    setup_auth_indexes()
-except ConnectionFailure:
-    print("❌ MongoDB connection failed")
-    raise
+    try:
+        setup_auth_indexes()
+    except Exception as e:
+        print("⚠️ Index setup skipped:", e)
+
+except Exception as e:
+    print("❌ MongoDB connection failed:", e)
+    resumes_collection = None   # ✅ DO NOT CRASH APP
 
 UPLOAD_DIR = Path("temp_uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
